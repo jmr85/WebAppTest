@@ -17,7 +17,7 @@ public class ViewPortfolioTestConEvidencia {
 	String dirEvidencias = "..\\WebAppTest\\Evidencias\\";
 	
 	@BeforeSuite
-	public void abrirNavegador() {
+	public void setUp() {
 		driver = new ChromeDriver();
 		driver.get(url);
 		driver.manage().window().maximize();
@@ -66,9 +66,8 @@ public class ViewPortfolioTestConEvidencia {
 		
 	}
 
-	
 	@AfterSuite
-	public void cerrarNavegador() {
+	public void tearDown() {
 		//driver.close();
 	}
 }

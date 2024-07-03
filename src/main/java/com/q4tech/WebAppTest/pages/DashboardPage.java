@@ -3,6 +3,7 @@ package com.q4tech.WebAppTest.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -11,10 +12,12 @@ public class DashboardPage {
 
 	// Localizadores Elementos web
 	@FindBy(xpath = "//body/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/*[1]")
+	@CacheLookup
 	WebElement toggleAside;
 
 	// Menu Portfolios
 	@FindBy(xpath = "//span[@id='menu_relations']")
+	@CacheLookup
 	WebElement menuRelations;
 
 	// Grupo de carteras Physicians

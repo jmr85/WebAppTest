@@ -71,9 +71,16 @@ public class ClickVisitaTestConEvidencia {
 		
 		portfolios.switchToWebviewFrame();
 		
-		portfolios.clickLinkCustomerDetail();
+		//portfolios.clickLinkCustomerDetail(); OK
 		
-		//portfolios.clickFaceToFaceCallLink();
+		//esperar a que se vayan los Toast de error
+		Thread.sleep(6000);// OK
+		
+		portfolios.clickLinkActions();
+		
+		portfolios.clickFaceToFaceCallLink();
+		
+		Thread.sleep(2000);
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "5_click_new_visit.jpg");
 		

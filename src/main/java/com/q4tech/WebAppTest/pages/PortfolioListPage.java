@@ -22,13 +22,32 @@ public class PortfolioListPage {
 	@FindBy(xpath = "//strong[contains(text(),'ALFANO, AGOSTINO')]")
 	WebElement itemPortfolio;
 
-	// boton acciones
+	// boton acciones del relation, de filtro y demas
 	@FindBy(xpath = "//button[@id='dropdownActions']")
 	WebElement dropdownActions;
-
+	
+	// boton ver detalle cartera
 	@FindBy(xpath = "//button[text()=' View Portfolio']")
 	@CacheLookup
 	WebElement btnViewPortfolio;
+	
+	// Locators dentro de la WebView Frame
+	@FindBy(xpath = "//iframe[@id='webviewFrame']")
+	@CacheLookup
+	WebElement webviewFrame;
+	
+	@FindBy(xpath = "//span[@id='headermenu_CUSTOMER_DETAIL']")
+	@CacheLookup
+	WebElement linkCustomerDetail;
+	
+	// Menu actions de la cartera
+	@FindBy(xpath = "//span[@id='button-bookmark']")
+	@CacheLookup
+	WebElement linkActions; 
+	
+	@FindBy(xpath = "//a[contains(text(),'Face to Face Call (MD)')]")
+	@CacheLookup
+	WebElement faceToFaceCallLink;
 
 	// Constructor
 	public PortfolioListPage(WebDriver driver) {
@@ -52,4 +71,22 @@ public class PortfolioListPage {
 	public void clickViewPortfolio() {
 		btnViewPortfolio.click();
 	}
+	
+	// Acciones dentro de la WebView Frame
+	public void clickLinkActions() {
+		linkActions.click();
+	}
+	
+	public void clickFaceToFaceCallLink() {
+		faceToFaceCallLink.click();
+	}
+	
+	public void clickLinkCustomerDetail() {
+		linkCustomerDetail.click();
+	}
+	
+	public void switchToWebviewFrame() {
+		driver.switchTo().frame(webviewFrame);
+	}
+	
 }

@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.q4tech.WebAppTest.pages.*;
+import com.q4tech.WebAppTest.pages.views.relation.PortfolioListPage;
 import com.q4tech.WebAppTest.utils.*;
 
 public class ViewPortfolioTestConEvidencia {
@@ -27,7 +28,7 @@ public class ViewPortfolioTestConEvidencia {
 	public void viewPortfolio() throws IOException, InterruptedException {
 		// 1) Hacer clic en Sign In
 		// 2) Completar el correo y contraseña
-		LoginPage login = new LoginPage(driver);
+		LoginView login = new LoginView(driver);
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
@@ -37,13 +38,13 @@ public class ViewPortfolioTestConEvidencia {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
 		
-		DashboardPage dashboard = new DashboardPage(driver);
+		DashboardView dashboard = new DashboardView(driver);
 		
 		dashboard.mouseOverToggleAside();
 		
 		dashboard.clickMenuRelations();
 		
-		dashboard.clickLinkPortfolios();
+		dashboard.clickLinkPortfoliosPhysicians();
 		
 		dashboard.moveMouseToCenter();
 		

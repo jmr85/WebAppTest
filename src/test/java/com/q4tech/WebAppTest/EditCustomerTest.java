@@ -13,7 +13,8 @@ import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListPage;
 import com.q4tech.WebAppTest.utils.*;
 
-public class ClickVisitaTestConEvidencia {
+public class EditCustomerTest {
+	
 	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
 	WebDriver driver;
 	String dirEvidencias = "..\\WebAppTest\\Evidencias\\";
@@ -30,7 +31,7 @@ public class ClickVisitaTestConEvidencia {
 	}
 	
 	@Test
-	public void viewPortfolio() throws IOException, InterruptedException {
+	public void editCustomer() throws IOException, InterruptedException {
 		// 1) Hacer clic en Sign In
 		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
@@ -49,7 +50,7 @@ public class ClickVisitaTestConEvidencia {
 		
 		dashboard.clickMenuRelations();
 		
-		dashboard.clickLinkPortfoliosPhysicians();
+		dashboard.clickLinkPortfoliosClinicalSites();
 		
 		dashboard.moveMouseToCenter();
 		
@@ -77,13 +78,37 @@ public class ClickVisitaTestConEvidencia {
 		//esperar a que se vayan los Toast de error
 		Thread.sleep(6000);// OK
 		
-		portfolios.clickLinkActions();
-		
-		portfolios.clickFaceToFaceCallLink();
+		portfolios.clickBtnEditCustomer();
 		
 		Thread.sleep(2000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "5_click_new_visit.jpg");
+		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "5_click_edit_customer.jpg");
+		
+		// hay que "deswitchear", volver atras para
+		// luego volver switchear otro iframe (webview)
+		// o solo volver a interactuar normal
+		driver.switchTo().defaultContent();
+		
+		EditCustomerWebView editCustomer = new EditCustomerWebView(driver);
+		
+		//editCustomer.clickBtnSaveEditCustomer();
+		
+		Thread.sleep(2000);
+		
+		//CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "6_click_save_edit_customer.jpg");
+		
+		editCustomer.clickTxtNameCustomer();
+		
+		editCustomer.fillTxtNameCustomer("Pepito");
+		
+		
+		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "7_edit_name_customer.jpg");
+		
+		editCustomer.clickBtnSaveEditCustomer();
+		
+		Thread.sleep(2000);
+		
+		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "8_click_save_edit_customer.jpg");
 		
 	}
 
@@ -91,4 +116,5 @@ public class ClickVisitaTestConEvidencia {
 	public void tearDown() {
 		//driver.close();
 	}
+
 }

@@ -1,4 +1,4 @@
-package com.q4tech.WebAppTest.pages;
+package com.q4tech.WebAppTest.pages.views.relation;
 
 import java.time.Duration;
 
@@ -19,7 +19,8 @@ public class PortfolioListPage {
 	// Item de cartera
 	// @FindBy(xpath =
 	// "/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[5]/div/div[2]")
-	@FindBy(xpath = "//strong[contains(text(),'ALFANO, AGOSTINO')]")
+	//@FindBy(xpath = "//strong[contains(text(),'ALFANO, AGOSTINO')]")
+	@FindBy(xpath = "/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[5]/div/div[2]")
 	WebElement itemPortfolio;
 
 	// boton acciones del relation, de filtro y demas
@@ -62,7 +63,7 @@ public class PortfolioListPage {
 	@CacheLookup
 	WebElement btnSaveVisit;
 	
-	// Locators iframe (webviewa)
+	// Locators iframe (webview)
 	// WebView Frame de relation
 	@FindBy(xpath = "//iframe[@id='webviewFrame']")
 	@CacheLookup
@@ -80,6 +81,12 @@ public class PortfolioListPage {
 	@FindBy(css = "iframe[id^='IFRAME_']")
 	@CacheLookup
 	WebElement webviewFrameVisitFateToFace;
+	
+	// boton dentro de un iframe, hay que switchear antes
+	// Edit Customer (Clinical Sites)
+	@FindBy(css = "#btn_editCustomer")
+	@CacheLookup
+	WebElement btnEditCustomer;
 	
 	// Constructor
 	public PortfolioListPage(WebDriver driver) {
@@ -129,6 +136,10 @@ public class PortfolioListPage {
 	
 	public void clickBtnSaveVisit() {
 		btnSaveVisit.click();
+	}
+	
+	public void clickBtnEditCustomer() {
+		btnEditCustomer.click();
 	}
 	
 	// Acciones switch a un frame (webviews)

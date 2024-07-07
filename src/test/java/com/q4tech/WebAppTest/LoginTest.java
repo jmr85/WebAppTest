@@ -23,7 +23,7 @@ public class LoginTest {
 	public void login() {
 		// 1) Hacer clic en Sign In
 		// 2) Completar el correo y contraseña
-		LoginPage login = new LoginPage(driver);
+		LoginView login = new LoginView(driver);
 		login.ingresarCredenciales("admin", "admin2024");
 	}
 

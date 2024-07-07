@@ -27,7 +27,7 @@ public class LoginTestConEvidencia {
 	public void login() throws IOException, InterruptedException {
 		// 1) Hacer clic en Sign In
 		// 2) Completar el correo y contraseña
-		LoginPage login = new LoginPage(driver);
+		LoginView login = new LoginView(driver);
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		

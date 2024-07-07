@@ -7,7 +7,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPage {
+public class DashboardView {
 	private WebDriver driver;
 
 	// Localizadores Elementos web
@@ -22,10 +22,14 @@ public class DashboardPage {
 
 	// Grupo de carteras Physicians
 	@FindBy(xpath = "//a[@id='menu_relations_5']")
-	WebElement linkPortfolios;
+	WebElement linkPortfoliosPhysicians;
+	
+	// Grupo de carteras Clinical Sites
+	@FindBy(xpath = "//a[@id='menu_relations_9']")
+	WebElement linkPortfoliosClinicalSites;
 
 	// Constructor
-	public DashboardPage(WebDriver driver) {
+	public DashboardView(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -54,7 +58,11 @@ public class DashboardPage {
 		menuRelations.click();
 	}
 
-	public void clickLinkPortfolios() {
-		linkPortfolios.click();
+	public void clickLinkPortfoliosPhysicians() {
+		linkPortfoliosPhysicians.click();
+	}
+	
+	public void clickLinkPortfoliosClinicalSites() {
+		linkPortfoliosClinicalSites.click();
 	}
 }

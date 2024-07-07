@@ -6,7 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginView {
 	// Elementos web
 	@FindBy(xpath = "//input[@id='txtUserName']")
 	@CacheLookup
@@ -21,7 +21,7 @@ public class LoginPage {
 	WebElement btnLogin;
 
 	// Constructor
-	public LoginPage(WebDriver driver) {
+	public LoginView(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 

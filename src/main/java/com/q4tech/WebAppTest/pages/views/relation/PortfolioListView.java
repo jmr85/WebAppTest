@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PortfolioListPage {
+public class PortfolioListView {
 
 	private WebDriver driver;
 
@@ -89,7 +89,7 @@ public class PortfolioListPage {
 	WebElement btnEditCustomer;
 	
 	// Constructor
-	public PortfolioListPage(WebDriver driver) {
+	public PortfolioListView(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

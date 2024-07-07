@@ -10,7 +10,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.q4tech.WebAppTest.pages.*;
-import com.q4tech.WebAppTest.pages.views.relation.PortfolioListPage;
+import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
+import com.q4tech.WebAppTest.pages.webviews.EditCustomerWebView;
 import com.q4tech.WebAppTest.utils.*;
 
 public class EditCustomerTest {
@@ -56,7 +57,7 @@ public class EditCustomerTest {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
 		
-		PortfolioListPage portfolios = new PortfolioListPage(driver);
+		PortfolioListView portfolios = new PortfolioListView(driver);
 		
 		Thread.sleep(2000);
 		
@@ -98,6 +99,8 @@ public class EditCustomerTest {
 		//CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "6_click_save_edit_customer.jpg");
 		
 		editCustomer.clickTxtNameCustomer();
+		
+		Thread.sleep(2000);
 		
 		editCustomer.fillTxtNameCustomer("Pepito");
 		

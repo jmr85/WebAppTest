@@ -1,4 +1,4 @@
-package com.q4tech.WebAppTest.pages;
+package com.q4tech.WebAppTest.pages.webviews;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EditCustomerWebView {
 	
-	private WebDriver driver;
-	
 	@FindBy(xpath = "//*[@id=\"kt_toolbar_container\"]/div[2]/button[2]")
 	WebElement btnSaveEditCustomer;
 	
@@ -16,7 +14,6 @@ public class EditCustomerWebView {
 	WebElement txtNameCustomer;
 	
 	public EditCustomerWebView(WebDriver driver) {
-		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -29,6 +26,6 @@ public class EditCustomerWebView {
 	}
 	
 	public void fillTxtNameCustomer(String name) {
-		btnSaveEditCustomer.sendKeys(name);
+		txtNameCustomer.sendKeys(name);
 	}
 }

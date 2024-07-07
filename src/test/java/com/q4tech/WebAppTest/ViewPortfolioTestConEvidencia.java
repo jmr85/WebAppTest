@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.q4tech.WebAppTest.pages.*;
-import com.q4tech.WebAppTest.pages.views.relation.PortfolioListPage;
+import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
 import com.q4tech.WebAppTest.utils.*;
 
 public class ViewPortfolioTestConEvidencia {
@@ -50,7 +50,7 @@ public class ViewPortfolioTestConEvidencia {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
 		
-		PortfolioListPage portfolios = new PortfolioListPage(driver);
+		PortfolioListView portfolios = new PortfolioListView(driver);
 		
 		Thread.sleep(2000);
 		

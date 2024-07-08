@@ -10,8 +10,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.q4tech.WebAppTest.pages.*;
+import com.q4tech.WebAppTest.pages.views.customer.EditCustomerView;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
-import com.q4tech.WebAppTest.pages.webviews.EditCustomerWebView;
 import com.q4tech.WebAppTest.utils.*;
 
 public class EditCustomerTest {
@@ -90,7 +90,7 @@ public class EditCustomerTest {
 		// o solo volver a interactuar normal
 		driver.switchTo().defaultContent();
 		
-		EditCustomerWebView editCustomer = new EditCustomerWebView(driver);
+		EditCustomerView editCustomer = new EditCustomerView(driver);
 		
 		//editCustomer.clickBtnSaveEditCustomer();
 		

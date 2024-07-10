@@ -32,6 +32,11 @@ public class PortfolioListView {
 	@CacheLookup
 	WebElement btnViewPortfolio;
 	
+	// boton Add Portfolio / New Portfolio
+	@FindBy(xpath = "//button[@class=\"btn btn-sm btn-primary\"][normalize-space()=\"Add Portfolio\"]")
+	@CacheLookup
+	WebElement btnAddPortfolio;
+	
 	@FindBy(xpath = "//span[@id='headermenu_CUSTOMER_DETAIL']")
 	@CacheLookup
 	WebElement linkCustomerDetail;
@@ -109,6 +114,10 @@ public class PortfolioListView {
 
 	public void clickViewPortfolio() {
 		btnViewPortfolio.click();
+	}
+	
+	public void clickAddPortfolio() {
+		btnAddPortfolio.click();
 	}
 	
 	// Acciones dentro de la WebView Frame

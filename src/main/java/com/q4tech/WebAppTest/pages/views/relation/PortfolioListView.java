@@ -37,6 +37,7 @@ public class PortfolioListView {
 	@CacheLookup
 	WebElement btnAddPortfolio;
 	
+	// Boton 'Detail'
 	@FindBy(xpath = "//span[@id='headermenu_CUSTOMER_DETAIL']")
 	@CacheLookup
 	WebElement linkCustomerDetail;
@@ -50,42 +51,11 @@ public class PortfolioListView {
 	@CacheLookup
 	WebElement faceToFaceCallLink;
 	
-	// Solapa Promoted Products
-	@FindBy(xpath = "//span[@id='headermenu_DYNAMIC_MENU_PRODUCT_GRID']")
-	@CacheLookup
-	WebElement tabPromotedProducts;
-	
-	// CheckBox Sample Product
-	@FindBy(xpath = "//tbody/tr[1]/td[1]/label[1]/span[1]")
-	@CacheLookup
-	WebElement checkBoxSampleProduct;
-	
-	// Button SAVE visita Face To Face
-	// Es parte del modal que contiene el iframe
-	// Asi que hay que salir del iframe para que
-	// localice al elemento
-	@FindBy(xpath = "//button[text()='SAVE']")
-	@CacheLookup
-	WebElement btnSaveVisit;
-	
 	// Locators iframe (webview)
-	// WebView Frame de relation
+	// WebView Frame de relation (HCP Details tris) code file 33
 	@FindBy(xpath = "//iframe[@id='webviewFrame']")
 	@CacheLookup
-	WebElement webviewFrame;
-		
-	// webview de visita Face to Face Call (MD)
-	// hay que volver hacer porque es dinamico el ID
-	//IFRAME_05262024_042657
-	//IFRAME_05332024_043311
-	//IFRAME_05362024_053608
-	//IFRAME_05332024_063336
-	//@FindBy(xpath = "/html[1]/body[1]/div[9]/div[1]/div[1]/div[2]/div[1]/iframe[1]")
-	//@FindBy(xpath = "//iframe[matches(@id, 'IFRAME_\\d{8}_\\d{6}')]")
-	//@FindBy(xpath = "//iframe[contains(@id, 'IFRAME_') and contains(@id, '2024_')]")
-	@FindBy(css = "iframe[id^='IFRAME_']")
-	@CacheLookup
-	WebElement webviewFrameVisitFateToFace;
+	WebElement webviewFrameHCPDetailsTris;
 	
 	// boton dentro de un iframe, hay que switchear antes
 	// Edit Customer (Clinical Sites)
@@ -133,31 +103,13 @@ public class PortfolioListView {
 		linkCustomerDetail.click();
 	}
 	
-	public void clickTabPromotedProducts() {
-		tabPromotedProducts.click();
-	}
-	
-	public void clickCheckBoxSampleProduct() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-		wait.until(ExpectedConditions.elementToBeClickable(checkBoxSampleProduct));
-		checkBoxSampleProduct.click();
-	}
-	
-	public void clickBtnSaveVisit() {
-		btnSaveVisit.click();
-	}
-	
 	public void clickBtnEditCustomer() {
 		btnEditCustomer.click();
 	}
 	
 	// Acciones switch a un frame (webviews)
-	public void switchToWebviewFrame() {
-		driver.switchTo().frame(webviewFrame);
-	}
-	
-	public void switchToWebviewFrameVisitFateToFace() {
-		driver.switchTo().frame(webviewFrameVisitFateToFace);
+	public void switchToWebviewFrameHCPDetailsTris() {
+		driver.switchTo().frame(webviewFrameHCPDetailsTris);
 	}
 	
 }

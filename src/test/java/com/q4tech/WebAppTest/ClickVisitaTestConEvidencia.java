@@ -70,7 +70,7 @@ public class ClickVisitaTestConEvidencia {
 		
 		Thread.sleep(3000);
 		
-		portfolios.switchToWebviewFrame();
+		portfolios.switchToWebviewFrameHCPDetailsTris();
 		
 		//portfolios.clickLinkCustomerDetail(); OK
 		

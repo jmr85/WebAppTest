@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
+import com.q4tech.WebAppTest.pages.webviews.VisitFaceToFaceCallWebView;
 import com.q4tech.WebAppTest.utils.*;
 
 public class SaveVisitTest {
@@ -60,19 +61,12 @@ public class SaveVisitTest {
 		Thread.sleep(2000);
 		
 		portfolios.clickItemPortfolio();
-		//portfolios.clickdropdownActions();
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
 		
-		//portfolios.clickViewPortfolio();
-		
-		//portfolios.clickLinkActions();
-		
 		Thread.sleep(3000);
 		
-		portfolios.switchToWebviewFrame();
-		
-		//portfolios.clickLinkCustomerDetail(); OK
+		portfolios.switchToWebviewFrameHCPDetailsTris();
 		
 		//esperar a que se vayan los Toast de error
 		Thread.sleep(6000);// OK
@@ -91,23 +85,16 @@ public class SaveVisitTest {
 		
 		Thread.sleep(2000);
 		
-		portfolios.switchToWebviewFrameVisitFateToFace();
+		VisitFaceToFaceCallWebView visitFaceToFace = new VisitFaceToFaceCallWebView(driver);
+		visitFaceToFace.switchToWebviewFrameVisitFateToFace();
 		
 		Thread.sleep(1000);
 		
-		portfolios.clickTabPromotedProducts();
+		visitFaceToFace.clickTabPromotedProducts();
+	
+		visitFaceToFace.clickCheckBoxSampleProduct();
 		
-		//Thread.sleep(2000);
-		
-		portfolios.clickCheckBoxSampleProduct();
-		
-		//Thread.sleep(4000);
-		
-		// hay que "deswitchear", volver atras para
-		// luego volver switchear otro iframe (webview)
-		driver.switchTo().defaultContent();
-		
-		portfolios.clickBtnSaveVisit();
+		visitFaceToFace.clickBtnSaveVisit();
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "6_click_save_visit.jpg");
 		

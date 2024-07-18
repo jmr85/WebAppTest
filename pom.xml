@@ -19,7 +19,7 @@
   </properties>
   <profiles>
 		<profile>
-			<id>CrossBrowser</id>
+			<id>LoginTestCrossBrowser</id>
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -29,7 +29,7 @@
 							<version>2.22.1</version>
 							<configuration>
 								<suiteXmlFiles>
-									<suiteXmlFile>testngCrossBrowserTesting.xml</suiteXmlFile>
+									<suiteXmlFile>testngLoginTestCrossBrowser.xml</suiteXmlFile>
 								</suiteXmlFiles>
 							</configuration>
 						</plugin>

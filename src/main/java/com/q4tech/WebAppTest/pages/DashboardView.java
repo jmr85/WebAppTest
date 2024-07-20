@@ -15,6 +15,16 @@ public class DashboardView {
 	@CacheLookup
 	WebElement toggleAside;
 
+	// User Button	
+	@FindBy(xpath = "//span[@class='btn-label text-break']")
+	@CacheLookup
+	WebElement btnUser;
+
+	// Logout Button	
+	@FindBy(id = "btnLogout")
+	@CacheLookup
+	WebElement btnLogout;
+
 	// Menu Portfolios
 	@FindBy(xpath = "//span[@id='menu_relations']")
 	@CacheLookup
@@ -64,5 +74,11 @@ public class DashboardView {
 	
 	public void clickLinkPortfoliosClinicalSites() {
 		linkPortfoliosClinicalSites.click();
+	}
+
+	public void doLogOut() {
+		this.mouseOverToggleAside();
+		btnUser.click();
+		btnLogout.click();
 	}
 }

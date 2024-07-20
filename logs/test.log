@@ -55,3 +55,76 @@
 01:14:25.677 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test case: Save Visit ===========
 01:14:25.774 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test cases execution ===========
 01:14:25.774 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== tearDown ===========
+02:02:07.395 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:02:07.403 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:02:17.523 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:02:17.875 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:02:17.977 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:02:19.748 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:02:21.070 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:02:21.355 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:02:21.355 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:24:27.077 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:24:27.096 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:24:40.807 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:24:41.359 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:24:41.505 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:24:43.678 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:24:45.047 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:24:47.241 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:24:47.242 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:32:43.627 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:32:43.642 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:32:51.639 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:32:51.893 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:32:51.993 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:32:52.877 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:32:52.878 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:34:00.288 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:34:00.315 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:34:13.131 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:34:13.493 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:34:13.637 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:34:15.538 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:34:16.882 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:34:18.371 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:34:18.372 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:42:00.838 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:42:00.853 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:42:06.249 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:42:12.728 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:42:12.848 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:42:14.663 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:42:15.976 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:42:18.819 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:42:18.820 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:45:05.524 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:45:05.540 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:45:10.550 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:45:17.691 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:45:17.859 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:45:19.687 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:45:21.025 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:45:42.348 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:45:42.349 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+02:58:19.431 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+02:58:19.448 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+02:58:31.648 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+02:58:32.045 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+02:58:32.162 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+02:58:33.798 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+02:58:35.243 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+02:58:39.941 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test case: Logout ===========
+02:58:40.124 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+02:58:40.125 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========
+03:03:15.133 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== setUp ===========
+03:03:15.148 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== Starting test cases execution ===========
+03:03:25.949 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+03:03:26.263 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== starting test case: Logout ===========
+03:03:26.395 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Starting login process
+03:03:28.188 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Credentials entered
+03:03:29.559 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Navigating to dashboard
+03:03:31.403 [main] INFO  com.q4tech.WebAppTest.LogoutTest - Logout completed
+03:03:34.260 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test case: Logout ===========
+03:03:34.424 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== ending test cases execution ===========
+03:03:34.424 [main] INFO  com.q4tech.WebAppTest.LogoutTest - ========== tearDown ===========

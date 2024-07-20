@@ -17,3 +17,41 @@
 18:02:04.973 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test case: Save Visit ===========
 18:02:05.070 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test cases execution ===========
 18:02:05.072 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== tearDown ===========
+01:07:09.603 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== setUp ===========
+01:07:09.611 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== Starting test cases execution ===========
+01:07:19.572 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+01:07:19.844 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== starting test case: Save Visit ===========
+01:07:19.927 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Starting login process
+01:07:22.573 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Credentials entered
+01:07:23.811 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigating to dashboard
+01:07:26.014 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigation to portfolios list completed
+01:07:29.164 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Portfolio selected
+01:07:32.737 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Switched to HCP details frame
+01:07:39.076 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Initiating new Face to Face visit
+01:07:41.353 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Returning to main content
+01:07:43.426 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Switched to Face to Face visit frame
+01:07:44.573 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Promoted Products tab selected
+01:07:45.330 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Sample product selected
+01:07:45.465 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Visit saved
+01:07:45.800 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test case: Save Visit ===========
+01:07:45.931 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test cases execution ===========
+01:07:45.933 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== tearDown ===========
+01:13:52.521 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== setUp ===========
+01:13:52.527 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== Starting test cases execution ===========
+01:14:01.519 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigated to URL: http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/
+01:14:01.995 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== starting test case: Save Visit ===========
+01:14:02.137 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Starting login process
+01:14:03.779 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Credentials entered
+01:14:05.055 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigating to dashboard
+01:14:06.131 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Navigation to portfolios list completed
+01:14:08.907 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Portfolio selected
+01:14:12.628 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Switched to HCP details frame
+01:14:19.114 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Initiating new Face to Face visit
+01:14:21.331 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Returning to main content
+01:14:23.410 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Switched to Face to Face visit frame
+01:14:24.596 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Promoted Products tab selected
+01:14:25.296 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Sample product selected
+01:14:25.412 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - Visit saved
+01:14:25.677 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test case: Save Visit ===========
+01:14:25.774 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== ending test cases execution ===========
+01:14:25.774 [main] INFO  com.q4tech.WebAppTest.SaveVisitTest - ========== tearDown ===========

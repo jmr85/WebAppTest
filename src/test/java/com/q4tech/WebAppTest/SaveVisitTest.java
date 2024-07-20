@@ -36,8 +36,9 @@ public class SaveVisitTest {
 		
 		driver = new ChromeDriver(options);
 		driver.get(url);
+		logger.info("Navigated to URL: {}", url);
+		
 		driver.manage().window().maximize();
-		logger.info("Open Browser and Navigate to URL");
 	}
 	
 	@Test

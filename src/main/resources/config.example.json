@@ -1,0 +1,14 @@
+{
+  "TestConfig": {
+    "BaseUrl": "https://example.com/webapp",
+    "EvidenceDirectory": "..\\WebAppTest\\Evidence\\",
+    "Users": [
+      {
+        "Code": 1000,
+        "Name": "Example User",
+        "UserName": "example@example.com",
+        "Password": "examplepassword"
+      }
+    ]
+  }
+}

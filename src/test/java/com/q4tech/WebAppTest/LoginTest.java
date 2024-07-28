@@ -24,7 +24,7 @@ public class LoginTest {
 		// 1) Hacer clic en Sign In
 		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
-		login.ingresarCredenciales("admin", "admin2024");
+		login.doLogin("admin", "admin2024");
 	}
 
 	

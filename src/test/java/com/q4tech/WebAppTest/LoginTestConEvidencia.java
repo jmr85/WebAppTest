@@ -31,7 +31,7 @@ public class LoginTestConEvidencia {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
-		login.ingresarCredenciales("admin", "admin2024");
+		login.doLogin("admin", "admin2024");
 		
 		Thread.sleep(1000);
 		

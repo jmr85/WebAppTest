@@ -48,7 +48,7 @@ public class LogoutTest {
 		CaptureEvidenceUtil.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin.jpg");
 		
 		User user = JsonConfigReader.getUsers().get(0);
-		login.ingresarCredenciales(user.getUserName(), user.getPassword());
+		login.doLogin(user.getUserName(), user.getPassword());
 
 		logger.info("Credentials entered");
 

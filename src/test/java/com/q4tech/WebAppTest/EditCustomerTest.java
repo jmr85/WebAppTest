@@ -39,7 +39,7 @@ public class EditCustomerTest {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
-		login.ingresarCredenciales("testuser1@closeupus.com", "testuser12024");
+		login.doLogin("testuser1@closeupus.com", "testuser12024");
 		
 		Thread.sleep(1000);
 		

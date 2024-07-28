@@ -51,7 +51,7 @@ public class SaveVisitTest {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
-		login.ingresarCredenciales("testuser1@closeupus.com", "testuser12024");
+		login.doLogin("testuser1@closeupus.com", "testuser12024");
 		logger.info("Credentials entered");
 
 		Thread.sleep(1000);

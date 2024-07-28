@@ -6,12 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.q4tech.WebAppTest.listeners.TestListener;
 import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
 import com.q4tech.WebAppTest.utils.*;
 
+@Listeners(TestListener.class)
 public class ViewPortfolioTestConEvidencia {
 	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
 	WebDriver driver;
@@ -32,7 +35,7 @@ public class ViewPortfolioTestConEvidencia {
 		
 		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
-		login.ingresarCredenciales("testuser1@closeupus.com", "testuser12024");
+		login.doLogin("testuser1@closeupus.com", "testuser12024");
 		
 		Thread.sleep(1000);
 		

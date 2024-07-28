@@ -26,7 +26,7 @@ public class LoginView {
 	}
 
 	// Acciones
-	public void ingresarCredenciales(String email, String password) {
+	public void doLogin(String email, String password) {
 		txtUserName.sendKeys(email);
 		txtPassword.sendKeys(password);
 		btnLogin.click();

@@ -36,13 +36,13 @@ public class NewPortfolioTest {
 		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
 
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 
 		login.doLogin("testuser1@closeupus.com", "testuser12024");
 
 		Thread.sleep(1000);
 
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
 
 		DashboardView dashboard = new DashboardView(driver);
 
@@ -54,7 +54,7 @@ public class NewPortfolioTest {
 
 		dashboard.moveMouseToCenter();
 
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
 
 		PortfolioListView portfolios = new PortfolioListView(driver);
 
@@ -63,7 +63,7 @@ public class NewPortfolioTest {
 		portfolios.clickItemPortfolio();
 		// portfolios.clickdropdownActions();
 
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
 
 		// esperar a que se vayan los Toast de error
 		Thread.sleep(6000);// OK
@@ -73,7 +73,7 @@ public class NewPortfolioTest {
 		
 		Thread.sleep(2000);
 
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "8_click_save_edit_customer.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "8_click_save_edit_customer.jpg");
 		
 		
 		NewPortfolioView newPortfolioView = new NewPortfolioView(driver);
@@ -96,7 +96,7 @@ public class NewPortfolioTest {
 		
 		Thread.sleep(1000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "9_click_save_new_portfolio.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "9_click_save_new_portfolio.jpg");
 
 	}
 

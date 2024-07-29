@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.q4tech.WebAppTest.listeners.TestListener;
 import com.q4tech.WebAppTest.pages.*;
 
+@Listeners(TestListener.class)
 public class LoginTest {
 	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
 	WebDriver driver;

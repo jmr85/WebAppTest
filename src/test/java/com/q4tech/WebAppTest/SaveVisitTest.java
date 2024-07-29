@@ -49,14 +49,14 @@ public class SaveVisitTest {
 		LoginView login = new LoginView(driver);
 		logger.info("Starting login process");
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
 		login.doLogin("testuser1@closeupus.com", "testuser12024");
 		logger.info("Credentials entered");
 
 		Thread.sleep(1000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
 		
 		DashboardView dashboard = new DashboardView(driver);
 		logger.info("Navigating to dashboard");
@@ -67,7 +67,7 @@ public class SaveVisitTest {
 		dashboard.moveMouseToCenter();
 		logger.info("Navigation to portfolios list completed");
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
 		
 		PortfolioListView portfolios = new PortfolioListView(driver);
 		
@@ -76,7 +76,7 @@ public class SaveVisitTest {
 		portfolios.clickItemPortfolio();
 		logger.info("Portfolio selected");
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
 		
 		Thread.sleep(3000);
 		
@@ -92,7 +92,7 @@ public class SaveVisitTest {
 		
 		Thread.sleep(2000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "5_click_new_visit.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "5_click_new_visit.jpg");
 		
 		// hay que "deswitchear", volver atras para
 		// luego volver switchear otro iframe (webview)
@@ -115,7 +115,7 @@ public class SaveVisitTest {
 		visitFaceToFace.clickBtnSaveVisit();
 		logger.info("Visit saved");
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "6_click_save_visit.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "6_click_save_visit.jpg");
 		
 		logger.info("========== ending test case: Save Visit ===========");
 	}

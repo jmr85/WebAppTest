@@ -33,13 +33,13 @@ public class ViewPortfolioTestConEvidencia {
 		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
 		login.doLogin("testuser1@closeupus.com", "testuser12024");
 		
 		Thread.sleep(1000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
 		
 		DashboardView dashboard = new DashboardView(driver);
 		
@@ -51,7 +51,7 @@ public class ViewPortfolioTestConEvidencia {
 		
 		dashboard.moveMouseToCenter();
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
 		
 		PortfolioListView portfolios = new PortfolioListView(driver);
 		
@@ -60,13 +60,13 @@ public class ViewPortfolioTestConEvidencia {
 		portfolios.clickItemPortfolio();
 		//portfolios.clickdropdownActions();
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
 		
 		portfolios.clickViewPortfolio();
 		
 		Thread.sleep(2000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "5_view_portfolio.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "5_view_portfolio.jpg");
 		
 	}
 

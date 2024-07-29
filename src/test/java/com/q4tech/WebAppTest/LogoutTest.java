@@ -45,7 +45,7 @@ public class LogoutTest {
 		LoginView login = new LoginView(driver);
 		logger.info("Starting login process");
 		
-		CaptureEvidenceUtil.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin.jpg");
 		
 		User user = JsonConfigReader.getUsers().get(0);
 		login.doLogin(user.getUserName(), user.getPassword());
@@ -54,7 +54,7 @@ public class LogoutTest {
 
 		Thread.sleep(1000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin.jpg");
 		
 		DashboardView dashboard = new DashboardView(driver);
 		logger.info("Navigating to dashboard");
@@ -64,7 +64,7 @@ public class LogoutTest {
 
 		// Espero 2 segundos para el screenshot sobre login
 		Thread.sleep(2000);
-		CaptureEvidenceUtil.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_doLogout.jpg");
+		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_doLogout.jpg");
 	}
 
 	@AfterSuite

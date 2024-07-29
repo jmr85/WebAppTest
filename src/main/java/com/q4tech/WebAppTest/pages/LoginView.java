@@ -26,8 +26,8 @@ public class LoginView {
 	}
 
 	// Acciones
-	public void doLogin(String email, String password) {
-		txtUserName.sendKeys(email);
+	public void doLogin(String userName, String password) {
+		txtUserName.sendKeys(userName);
 		txtPassword.sendKeys(password);
 		btnLogin.click();
 	}

@@ -29,13 +29,13 @@ public class LoginTestConEvidencia {
 		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
 		
 		login.doLogin("admin", "admin2024");
 		
 		Thread.sleep(1000);
 		
-		CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
+		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
 		
 	}
 

@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -18,8 +20,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class CaptureEvidenceUtil {
+public class CaptureEvidence {
 	
+	//Captura de pantalla del navegador y la agrega a un documento de Word.
 	public static void captureScreenshotToDocument(WebDriver driver, String rutaImagen, String nombreDocumento, String tituloEvidencia) throws IOException, InvalidFormatException, InterruptedException {
 		File screen = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		File imageFile = new File(rutaImagen);
@@ -78,10 +81,18 @@ public class CaptureEvidenceUtil {
 		    TimeUnit.SECONDS.sleep(1);
 		}
 		
-		// solo guarda la captura en una carpeta
-		public static void getScreenshot(WebDriver driver, String rutaImagen, String nombreFile) throws IOException { 
+		// Captura pantalla del navegador y la guarda como un archivo con una marca de tiempo.
+		public static String getScreenshot(WebDriver driver, String rutaImagen, String nombreBase) throws IOException { 
 			File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screen, new File(rutaImagen + nombreFile));
+			
+			// Generar nombre de archivo con marca de tiempo
+			String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+			String nombreFile = nombreBase + "_" + timestamp + ".png";
+			
+			File destino = new File(rutaImagen + nombreFile);
+			FileUtils.copyFile(screen, destino);
+			
+			return nombreFile; // Devuelve el nombre del archivo generado
 		}
 
 }

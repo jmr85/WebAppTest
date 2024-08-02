@@ -2,26 +2,32 @@ package com.q4tech.WebAppTest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class DashboardView {
-	private WebDriver driver;
-
+public class DashboardView extends BaseView {
 	// Localizadores Elementos web
 	@FindBy(xpath = "//body/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/*[1]")
 	@CacheLookup
 	WebElement toggleAside;
 
-	// User Button	
-	@FindBy(xpath = "//span[@class='btn-label text-break']")
+	// User Follow Button	
+	@FindAll({
+		@FindBy(id="kt_user_follow_button"), //Matches
+		@FindBy(xpath = "//span[@class='btn-label text-break']") //doesn't match
+	})
 	@CacheLookup
 	WebElement btnUser;
 
-	// Logout Button	
-	@FindBy(id = "btnLogout")
+	// Logout Button
+	@FindAll({
+		@FindBy(id = "btnLogout"),
+		@FindBy(xpath = "//span[@id='btnLogout']/span[2]"),
+		@FindBy(xpath = "//span[contains(text(),'Log Out')]")
+	})	
 	@CacheLookup
 	WebElement btnLogout;
 
@@ -38,30 +44,34 @@ public class DashboardView {
 	@FindBy(xpath = "//a[@id='menu_relations_9']")
 	WebElement linkPortfoliosClinicalSites;
 
+	// WebView MAIN TRIS code file 18
+	@FindBy(id = "iframeContainer")
+	@CacheLookup
+	WebElement webviewFrameMainTris;
+
 	// Constructor
 	public DashboardView(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	// Acciones
 	public void mouseOverToggleAside() {
-		new Actions(driver).moveToElement(toggleAside).perform();
+		mouseOver(toggleAside);
 	}
 
 	public void moveMouseToCenter() {
-		int windowWidth = driver.manage().window().getSize().getWidth();
-		int windowHeight = driver.manage().window().getSize().getHeight();
+		moveMouseToCenter(toggleAside);
+	}
 
-		Actions actions = new Actions(driver);
-		actions.moveByOffset(windowWidth / 2 - toggleAside.getLocation().getX(),
-				windowHeight / 2 - toggleAside.getLocation().getY()).perform();
+	// Acciones
+	public WebDriver switchToWebviewFrameMainTris() {
+		//return driver.switchTo().frame(webviewFrameMainTris);
+		//return switchToWebviewFrame(webviewFrameMainTris);
+		return switchToWebviewFrame(webviewFrameMainTris);
+	}
 
-		/*
-		 * new WebDriverWait(driver, Duration.ofSeconds(5))
-		 * .until(ExpectedConditions.attributeContains(toggleAside, "class",
-		 * "retracted"));
-		 */
+	public WebDriver switchToDefaultContent() {
+		return switchToDefaultContent();
 	}
 
 	public void clickMenuRelations() {
@@ -69,16 +79,22 @@ public class DashboardView {
 	}
 
 	public void clickLinkPortfoliosPhysicians() {
-		linkPortfoliosPhysicians.click();
+		clickWithJS(linkPortfoliosPhysicians);
 	}
 	
 	public void clickLinkPortfoliosClinicalSites() {
-		linkPortfoliosClinicalSites.click();
+		click(linkPortfoliosClinicalSites);
 	}
 
 	public void doLogOut() {
 		this.mouseOverToggleAside();
-		btnUser.click();
-		btnLogout.click();
+		clickWithJS(btnUser);
+		//clickWithRetry(btnLogout, MAX_ATTEMPTS);
+		clickWithJS(btnLogout);
+	}
+
+	@Override
+	protected Logger getLogger() {
+		return LoggerFactory.getLogger(DashboardView.class);
 	}
 }

@@ -1,20 +1,17 @@
 package com.q4tech.WebAppTest.pages.webviews;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class VisitFaceToFaceCallWebView {
+import com.q4tech.WebAppTest.pages.BaseView;
+
+public class VisitFaceToFaceCallWebView extends BaseView {
 	// es la unica pantalla de visita webview o iframe, las demas visitas son comun
 	// html
-
-	private WebDriver driver;
 
 	// webview de visita Face to Face Call (MD) code file 16
 	@FindBy(css = "iframe[id^='IFRAME_']")
@@ -31,9 +28,10 @@ public class VisitFaceToFaceCallWebView {
 	@CacheLookup
 	WebElement checkBoxSampleProduct;
 
+	// Constructor
 	public VisitFaceToFaceCallWebView(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
+		switchToWebviewFrameVisitFateToFace(); // Switch al iframe (webview)
 	}
 
 	// Button SAVE visita Face To Face
@@ -44,26 +42,38 @@ public class VisitFaceToFaceCallWebView {
 	@CacheLookup
 	WebElement btnSaveVisit;
 
+	// Acciones dentro de la WebView Frame
 	public void switchToWebviewFrameVisitFateToFace() {
-		driver.switchTo().frame(webviewFrameVisitFateToFace);
+		switchToWebviewFrame(webviewFrameVisitFateToFace);
 	}
 
 	public void clickTabPromotedProducts() {
-		tabPromotedProducts.click();
+		click(tabPromotedProducts);
 	}
 
 	public void clickCheckBoxSampleProduct() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-		wait.until(ExpectedConditions.elementToBeClickable(checkBoxSampleProduct));
-		checkBoxSampleProduct.click();
+		click(checkBoxSampleProduct);
 	}
 
 	public void clickBtnSaveVisit() {
 		// hay que "deswitchear", volver atras.
 		// xq el boton save no esta dentro del iframe
 		// si esta dentro del mismo modal
-		driver.switchTo().defaultContent();
-		
-		btnSaveVisit.click();
+		switchToDefaultContent();	
+		click(btnSaveVisit);
+	}
+
+	public void doVisitFaceToFaceCall() {
+		clickTabPromotedProducts();
+		getLogger().info("Promoted Products tab selected");
+		clickCheckBoxSampleProduct();
+		getLogger().info("Sample product selected");
+		clickBtnSaveVisit();
+		getLogger().info("Visit saved");
+	}
+
+	@Override
+	protected Logger getLogger() {
+		return LoggerFactory.getLogger(VisitFaceToFaceCallWebView.class);
 	}
 }

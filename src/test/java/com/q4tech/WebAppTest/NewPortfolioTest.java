@@ -2,59 +2,40 @@ package com.q4tech.WebAppTest;
 
 import java.io.IOException;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.pages.views.relation.NewPortfolioView;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
 import com.q4tech.WebAppTest.utils.*;
 
-public class NewPortfolioTest {
-	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
-	WebDriver driver;
-	String dirEvidencias = "..\\WebAppTest\\Evidencias\\";
-
-	@BeforeSuite
-	public void setUp() {
-		ChromeOptions options = new ChromeOptions();
-		double zoom = 0.67;
-		options.addArguments("--force-device-scale-factor=" + zoom);
-
-		driver = new ChromeDriver(options);
-		driver.get(url);
-		driver.manage().window().maximize();
-	}
+public class NewPortfolioTest extends BaseTest {
+	private static final Logger logger = LoggerFactory.getLogger(EditCustomerTest.class);
 
 	@Test
 	public void newPortfolio() throws IOException, InterruptedException {
-		// 1) Hacer clic en Sign In
-		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
 
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin");
+		logger.info("Screenshot captured: {}", fileName);
 
-		login.doLogin("testuser1@closeupus.com", "testuser12024");
+		DashboardView dashboard = login.doLogin("testuser1@closeupus.com", "testuser12024");
 
 		Thread.sleep(1000);
 
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
-
-		DashboardView dashboard = new DashboardView(driver);
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin");
+		logger.info("Screenshot captured: {}", fileName);
 
 		dashboard.mouseOverToggleAside();
-
 		dashboard.clickMenuRelations();
-
 		dashboard.clickLinkPortfoliosClinicalSites();
-
 		dashboard.moveMouseToCenter();
 
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_portfolios_list");
+		logger.info("Screenshot captured: {}", fileName);
 
 		PortfolioListView portfolios = new PortfolioListView(driver);
 
@@ -63,23 +44,23 @@ public class NewPortfolioTest {
 		portfolios.clickItemPortfolio();
 		// portfolios.clickdropdownActions();
 
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "4_portfolio_item");
+		logger.info("Screenshot captured: {}", fileName);
 
 		// esperar a que se vayan los Toast de error
 		Thread.sleep(6000);// OK
 
-		// CLICK + NEW PORTFOLIO
+		// CLICK "+NEW PORTFOLIO"
 		portfolios.clickAddPortfolio();
 		
 		Thread.sleep(2000);
 
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "8_click_save_edit_customer.jpg");
-		
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "8_click_save_edit_customer");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		NewPortfolioView newPortfolioView = new NewPortfolioView(driver);
 		
 		newPortfolioView.clickBtnSelectCustomer();
-		
 		newPortfolioView.searchCustomer("john");
 		
 		Thread.sleep(1000);
@@ -96,12 +77,7 @@ public class NewPortfolioTest {
 		
 		Thread.sleep(1000);
 		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "9_click_save_new_portfolio.jpg");
-
-	}
-
-	@AfterSuite
-	public void tearDown() {
-		// driver.close();
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "9_click_save_new_portfolio");
+		logger.info("Screenshot captured: {}", fileName);
 	}
 }

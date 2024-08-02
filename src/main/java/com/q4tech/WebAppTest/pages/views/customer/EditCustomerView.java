@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class EditCustomerView {
-	
-	private static final int TIMEOUT = 3;// segundos
-	
+import com.q4tech.WebAppTest.pages.BaseView;
+
+public class EditCustomerView extends BaseView {
+	//Locators
 	@FindBy(xpath = "//*[@id=\"kt_toolbar_container\"]/div[2]/button[2]")
 	@CacheLookup
 	WebElement btnSaveEditCustomer;
@@ -19,19 +19,32 @@ public class EditCustomerView {
 	@CacheLookup
 	WebElement txtNameCustomer;
 	
+	//Contructor
 	public EditCustomerView(WebDriver driver) {
-		PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+		super(driver);
 	}
 	
-	public void clickBtnSaveEditCustomer() {
-		btnSaveEditCustomer.click();
-	}
-	
+	//Acciones
 	public void clickTxtNameCustomer() {
-		txtNameCustomer.click();
+		click(txtNameCustomer);
 	}
 	
 	public void fillTxtNameCustomer(String name) {
-		txtNameCustomer.sendKeys(name);
+		sendKeys(txtNameCustomer, name);
+	}
+
+	public void clickBtnSaveEditCustomer() {
+		click(btnSaveEditCustomer);
+	}
+
+	public void doSaveEditCustomer(String customerName) {
+		clickTxtNameCustomer();
+		fillTxtNameCustomer(customerName);
+		clickBtnSaveEditCustomer();
+	}
+
+	@Override
+	protected Logger getLogger() {
+		return LoggerFactory.getLogger(EditCustomerView.class);
 	}
 }

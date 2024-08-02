@@ -5,86 +5,72 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.pages.views.customer.EditCustomerView;
 import com.q4tech.WebAppTest.pages.views.relation.PortfolioListView;
+import com.q4tech.WebAppTest.pages.webviews.HCPDetailsTrisWebView;
 import com.q4tech.WebAppTest.utils.*;
 
-public class EditCustomerTest {
-	
-	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
-	WebDriver driver;
-	String dirEvidencias = "..\\WebAppTest\\Evidencias\\";
-	
-	@BeforeSuite
-	public void setUp() {
-		ChromeOptions options = new ChromeOptions();
-		double zoom = 0.67;
-		options.addArguments("--force-device-scale-factor=" + zoom);
-		
-		driver = new ChromeDriver(options);
-		driver.get(url);
-		driver.manage().window().maximize();
-	}
+public class EditCustomerTest extends BaseTest {
+	private static final Logger logger = LoggerFactory.getLogger(EditCustomerTest.class);
 	
 	@Test
 	public void editCustomer() throws IOException, InterruptedException {
-		// 1) Hacer clic en Sign In
-		// 2) Completar el correo y contraseña
 		LoginView login = new LoginView(driver);
 		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "1_preLogin.jpg");
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin");
+		logger.info("Screenshot captured: {}", fileName);
 		
-		login.doLogin("testuser1@closeupus.com", "testuser12024");
+		DashboardView dashboard = login.doLogin("testuser1@closeupus.com", "testuser12024");
 		
 		Thread.sleep(1000);
-		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "2_postLogin.jpg");
-		
-		DashboardView dashboard = new DashboardView(driver);
+
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_postLogin");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		dashboard.mouseOverToggleAside();
-		
 		dashboard.clickMenuRelations();
-		
 		dashboard.clickLinkPortfoliosClinicalSites();
-		
 		dashboard.moveMouseToCenter();
-		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "3_portfolios_list.jpg");
+	
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_portfolios_list");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		PortfolioListView portfolios = new PortfolioListView(driver);
 		
 		Thread.sleep(2000);
 		
 		portfolios.clickItemPortfolio();
-		//portfolios.clickdropdownActions();
 		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "4_portfolio_item.jpg");
-		
-		//portfolios.clickViewPortfolio();
-		
-		//portfolios.clickLinkActions();
+		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "4_portfolio_item.jpg");
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_portfolio_item");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		Thread.sleep(3000);
 		
-		portfolios.switchToWebviewFrameHCPDetailsTris();
-		
-		//portfolios.clickLinkCustomerDetail(); OK
+		HCPDetailsTrisWebView hcp = new HCPDetailsTrisWebView(driver);
 		
 		//esperar a que se vayan los Toast de error
 		Thread.sleep(6000);// OK
 		
-		portfolios.clickBtnEditCustomer();
+		hcp.clickBtnEditCustomer();
 		
 		Thread.sleep(2000);
 		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "5_click_edit_customer.jpg");
-		
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "4_click_edit_customer");
+		logger.info("Screenshot captured: {}", fileName);
+
 		// hay que "deswitchear", volver atras para
 		// luego volver switchear otro iframe (webview)
 		// o solo volver a interactuar normal
@@ -96,28 +82,20 @@ public class EditCustomerTest {
 		
 		Thread.sleep(2000);
 		
-		//CaptureEvidenceUtil.getScreenshot(driver, dirEvidencias, "6_click_save_edit_customer.jpg");
-		
 		editCustomer.clickTxtNameCustomer();
 		
 		Thread.sleep(2000);
 		
 		editCustomer.fillTxtNameCustomer("Pepito");
 		
-		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "7_edit_name_customer.jpg");
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "5_edit_name_customer");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		editCustomer.clickBtnSaveEditCustomer();
 		
 		Thread.sleep(2000);
 		
-		CaptureEvidence.getScreenshot(driver, dirEvidencias, "8_click_save_edit_customer.jpg");
-		
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "6_click_save_edit_customer");
+		logger.info("Screenshot captured: {}", fileName);
 	}
-
-	@AfterSuite
-	public void tearDown() {
-		//driver.close();
-	}
-
 }

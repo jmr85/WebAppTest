@@ -1,19 +1,14 @@
 package com.q4tech.WebAppTest.pages.views.relation;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
-public class PortfolioListView {
-
-	private WebDriver driver;
-
+import com.q4tech.WebAppTest.pages.BaseView;
+public class PortfolioListView extends BaseView {
 	// Localizadores Elementos web
 
 	// Item de cartera
@@ -37,79 +32,35 @@ public class PortfolioListView {
 	@CacheLookup
 	WebElement btnAddPortfolio;
 	
-	// Boton 'Detail'
-	@FindBy(xpath = "//span[@id='headermenu_CUSTOMER_DETAIL']")
-	@CacheLookup
-	WebElement linkCustomerDetail;
-	
-	// Menu actions de la cartera
-	@FindBy(xpath = "//span[@id='button-bookmark']")
-	@CacheLookup
-	WebElement linkActions; 
-	
-	@FindBy(xpath = "//a[contains(text(),'Face to Face Call (MD)')]")
-	@CacheLookup
-	WebElement faceToFaceCallLink;
-	
-	// Locators iframe (webview)
-	// WebView Frame de relation (HCP Details tris) code file 33
-	@FindBy(xpath = "//iframe[@id='webviewFrame']")
-	@CacheLookup
-	WebElement webviewFrameHCPDetailsTris;
-	
-	// boton dentro de un iframe, hay que switchear antes
-	// Edit Customer (Clinical Sites)
-	@FindBy(css = "#btn_editCustomer")
-	@CacheLookup
-	WebElement btnEditCustomer;
-	
 	// Constructor
 	public PortfolioListView(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	// Acciones
 	public void clickItemPortfolio() {
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.elementToBeClickable(itemPortfolio));
-
-		itemPortfolio.click();
+		click(itemPortfolio);
 	}
 
 	public void clickdropdownActions() {
-		dropdownActions.click();
+		click(dropdownActions);
 	}
 
 	public void clickViewPortfolio() {
-		btnViewPortfolio.click();
+		click(btnViewPortfolio);
 	}
 	
 	public void clickAddPortfolio() {
-		btnAddPortfolio.click();
+		click(btnAddPortfolio);
+	}	
+
+	public void doViewPortfolio() {
+		clickItemPortfolio();
+		clickViewPortfolio();
 	}
 	
-	// Acciones dentro de la WebView Frame
-	public void clickLinkActions() {
-		linkActions.click();
+	@Override
+	protected Logger getLogger() {
+		return LoggerFactory.getLogger(PortfolioListView.class);
 	}
-	
-	public void clickFaceToFaceCallLink() {
-		faceToFaceCallLink.click();
-	}
-	
-	public void clickLinkCustomerDetail() {
-		linkCustomerDetail.click();
-	}
-	
-	public void clickBtnEditCustomer() {
-		btnEditCustomer.click();
-	}
-	
-	// Acciones switch a un frame (webviews)
-	public void switchToWebviewFrameHCPDetailsTris() {
-		driver.switchTo().frame(webviewFrameHCPDetailsTris);
-	}
-	
 }

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
@@ -15,7 +14,6 @@ import com.q4tech.WebAppTest.pages.*;
 import com.q4tech.WebAppTest.utils.*;
 import com.q4tech.WebAppTest.utils.JsonConfigReader.User;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,53 +21,60 @@ import org.slf4j.LoggerFactory;
 public class LogoutTest {
 	private static final Logger logger = LoggerFactory.getLogger(LogoutTest.class);
 
-	// String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
+	private LoginView loginView;
+	private DashboardView dashboardView;
+
 	WebDriver driver;
-	// String dirEvidencias = "..\\WebAppTest\\Evidencias\\";
 	
 	@BeforeSuite
 	public void setUp() {
-		ChromeOptions options = new ChromeOptions();
-		double zoom = 0.67;
-		options.addArguments("--force-device-scale-factor=" + zoom);
-		
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver();
 		driver.get(JsonConfigReader.getBaseUrl());
 		logger.info("Navigated to URL: {}", JsonConfigReader.getBaseUrl());
-		
 		driver.manage().window().maximize();
+
+		loginView = new LoginView(driver);
 	}
 	
-	@Test
-	public void logout() throws IOException, InterruptedException {
-		LoginView login = new LoginView(driver);
+	@Test(priority = 1)
+	public void login() throws IOException {
 		logger.info("Starting login process");
 		
-		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin.jpg");
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin");
+		logger.info("Screenshot captured: {}", fileName);
 		
 		User user = JsonConfigReader.getUsers().get(0);
-		login.doLogin(user.getUserName(), user.getPassword());
+		dashboardView = loginView.doLogin(user.getUserName(), user.getPassword());
 
 		logger.info("Credentials entered");
+	}
+
+	@Test(priority = 2, dependsOnMethods = "login")
+	public void logout() throws IOException, InterruptedException {
 
 		Thread.sleep(1000);
+
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin");
+		logger.info("Screenshot captured: {}", fileName);
 		
-		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin.jpg");
-		
-		DashboardView dashboard = new DashboardView(driver);
+		//DashboardView dashboard = new DashboardView(driver);
 		logger.info("Navigating to dashboard");
 		
-		dashboard.doLogOut();
+		dashboardView.doLogOut();
 		logger.info("Logout completed");
 
 		// Espero 2 segundos para el screenshot sobre login
 		Thread.sleep(2000);
-		CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_doLogout.jpg");
+
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "3_doLogout");
+		logger.info("Screenshot captured: {}", fileName);
 	}
 
 	@AfterSuite
-	public void tearDown() {
-		//driver.close();
-		logger.info("========== tearDown ===========");
-	}
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+			logger.info("tearDown");
+		}
+    }
 }

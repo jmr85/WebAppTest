@@ -1,38 +1,74 @@
 package com.q4tech.WebAppTest;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import java.io.IOException;
+import java.util.List;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.q4tech.WebAppTest.listeners.TestListener;
 import com.q4tech.WebAppTest.pages.*;
+import com.q4tech.WebAppTest.utils.CaptureEvidence;
+import com.q4tech.WebAppTest.utils.JsonConfigReader;
+import com.q4tech.WebAppTest.utils.JsonConfigReader.User;
 
 @Listeners(TestListener.class)
-public class LoginTest {
-	String url = "http://capital.q4tech.com:7272/sfNetWebApp.Web_acmeus/";
-	WebDriver driver;
-	
-	@BeforeSuite
-	public void abrirNavegador() {
-		driver = new ChromeDriver();
-		driver.get(url);
-		driver.manage().window().maximize();
-	}
-	
-	@Test
-	public void login() {
-		// 1) Hacer clic en Sign In
-		// 2) Completar el correo y contraseña
+public class LoginTest extends BaseTest {
+	private static final Logger logger = LoggerFactory.getLogger(LoginTest.class);
+
+	@Test(priority = 0, dataProvider = "loginData", description = "Valid Login Scenario with correct username and password.")
+	public void login(String username, String password) throws InterruptedException, IOException {
+		
 		LoginView login = new LoginView(driver);
-		login.doLogin("admin", "admin2024");
+		DashboardView dashboard = login.doLogin(username, password);
+
+		Thread.sleep(500);
+
+		logger.info("Credentials entered");
+
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "postLogin");
+		logger.info("Screenshot captured: {}", fileName);
+
+		logger.info("Navigating to dashboard");
+		dashboard.doLogOut();
+		logger.info("Logout completed");
+
+		Thread.sleep(1000);
 	}
 
-	
-	@AfterSuite
-	public void cerrarNavegador() {
-		//driver.close();
+	@Test(enabled = false)//No tiene DataProvider
+	public void login() throws IOException, InterruptedException {
+		LoginView login = new LoginView(driver);
+		
+		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin");
+		logger.info("Screenshot captured: {}", fileName);
+
+		DashboardView dashboard = login.doLogin("admin", "admin2024");
+		
+		Thread.sleep(1000);
+
+		logger.info("Navigating to dashboard");
+		dashboard.doLogOut();
+		logger.info("Logout completed");
+		
+		Thread.sleep(1000);
+
+		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin");
+		logger.info("Screenshot captured: {}", fileName);
 	}
+
+	@DataProvider(name = "loginData")
+    public Object[][] loginData() {
+        List<User> users = JsonConfigReader.getUsers();
+        Object[][] data = new Object[users.size()][2];
+        for (int i = 0; i < users.size(); i++) {
+            data[i][0] = users.get(i).getUserName();
+            data[i][1] = users.get(i).getPassword();
+        }
+        return data;
+    }
 }

@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import com.q4tech.WebAppTest.listeners.TestListener;
 import com.q4tech.WebAppTest.pages.*;
-import com.q4tech.WebAppTest.utils.CaptureEvidence;
 import com.q4tech.WebAppTest.utils.JsonConfigReader;
 import com.q4tech.WebAppTest.utils.JsonConfigReader.User;
 
@@ -30,12 +29,13 @@ public class LoginTest extends BaseTest {
 
 		logger.info("Credentials entered");
 
-		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "postLogin");
-		logger.info("Screenshot captured: {}", fileName);
+		getScreenshot("2_postLogin");
 
 		logger.info("Navigating to dashboard");
 		dashboard.doLogOut();
 		logger.info("Logout completed");
+
+		getScreenshot("3_postLogout");
 
 		Thread.sleep(1000);
 	}
@@ -43,9 +43,8 @@ public class LoginTest extends BaseTest {
 	@Test(enabled = false)//No tiene DataProvider
 	public void login() throws IOException, InterruptedException {
 		LoginView login = new LoginView(driver);
-		
-		String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "1_preLogin");
-		logger.info("Screenshot captured: {}", fileName);
+
+		getScreenshot("1_preLogin");
 
 		DashboardView dashboard = login.doLogin("admin", "admin2024");
 		
@@ -55,10 +54,9 @@ public class LoginTest extends BaseTest {
 		dashboard.doLogOut();
 		logger.info("Logout completed");
 		
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 
-		fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), "2_postLogin");
-		logger.info("Screenshot captured: {}", fileName);
+		getScreenshot("2_postLogin");
 	}
 
 	@DataProvider(name = "loginData")

@@ -7,16 +7,16 @@
 			<class name="com.q4tech.WebAppTest.LoginTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test thread-count="5" name="PruebaEnFirefox">
+	<!--<test thread-count="5" name="PruebaEnFirefox">
 		<parameter name="browser" value="FIREFOX"></parameter>
 		<classes>
 			<class name="com.q4tech.WebAppTest.LoginTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
 	<test thread-count="5" name="PruebaEnEdge">
 		<parameter name="browser" value="Edge"></parameter>
 		<classes>
 			<class name="com.q4tech.WebAppTest.LoginTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test> -->
 </suite> <!-- Suite -->

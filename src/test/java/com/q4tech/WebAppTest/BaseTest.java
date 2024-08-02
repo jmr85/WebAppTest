@@ -1,5 +1,7 @@
 package com.q4tech.WebAppTest;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.q4tech.WebAppTest.listeners.TestListener;
+import com.q4tech.WebAppTest.utils.CaptureEvidence;
 import com.q4tech.WebAppTest.utils.JsonConfigReader;
 
 @Listeners(TestListener.class)
@@ -52,4 +55,9 @@ public class BaseTest {
             logger.info("tearDown");
         }
     }
+
+    public void getScreenshot(String nombreBase) throws IOException {
+        String fileName = CaptureEvidence.getScreenshot(driver, JsonConfigReader.getEvidenceDirectory(), nombreBase);
+		logger.info("Screenshot captured: {}", fileName);
+	}
 }

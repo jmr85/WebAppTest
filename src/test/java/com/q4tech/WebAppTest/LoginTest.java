@@ -1,9 +1,7 @@
 package com.q4tech.WebAppTest;
 
 import java.io.IOException;
-import java.util.List;
 
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -12,14 +10,18 @@ import org.slf4j.LoggerFactory;
 
 import com.q4tech.WebAppTest.listeners.TestListener;
 import com.q4tech.WebAppTest.pages.*;
-import com.q4tech.WebAppTest.utils.JsonConfigReader;
-import com.q4tech.WebAppTest.utils.JsonConfigReader.User;
+import com.q4tech.WebAppTest.utils.LoginDataProvider;
 
 @Listeners(TestListener.class)
 public class LoginTest extends BaseTest {
 	private static final Logger logger = LoggerFactory.getLogger(LoginTest.class);
 
-	@Test(priority = 0, dataProvider = "loginData", description = "Valid Login Scenario with correct username and password.")
+	@Test(
+		priority = 0, 
+		dataProvider = "loginDataProvider", 
+		dataProviderClass = LoginDataProvider.class,
+		description = "Valid Login Scenario with correct username and password."
+	)
 	public void login(String username, String password) throws InterruptedException, IOException {
 		
 		LoginView login = new LoginView(driver);
@@ -58,15 +60,4 @@ public class LoginTest extends BaseTest {
 
 		getScreenshot("2_postLogin");
 	}
-
-	@DataProvider(name = "loginData")
-    public Object[][] loginData() {
-        List<User> users = JsonConfigReader.getUsers();
-        Object[][] data = new Object[users.size()][2];
-        for (int i = 0; i < users.size(); i++) {
-            data[i][0] = users.get(i).getUserName();
-            data[i][1] = users.get(i).getPassword();
-        }
-        return data;
-    }
 }

@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.q4tech.WebAppTest.pages.views.xserver.user.UserListView;
+
 public class DashboardView extends BaseView {
 	// Localizadores Elementos web
 	@FindBy(xpath = "//body/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/*[1]")
@@ -48,6 +50,15 @@ public class DashboardView extends BaseView {
 	@FindBy(id = "iframeContainer")
 	@CacheLookup
 	WebElement webviewFrameMainTris;
+
+	// XSERVER
+	// Menu xServer
+	@FindBy(css = "#menu-xserver > .menu-title")
+	WebElement menuXServer;
+
+	// Menu xServer-userlist
+	@FindBy(css = "#menu-xserver-userlist > .menu-title")
+	WebElement menuXServerUserList;
 
 	// Constructor
 	public DashboardView(WebDriver driver) {
@@ -91,6 +102,12 @@ public class DashboardView extends BaseView {
 		clickWithJS(btnUser);
 		//clickWithRetry(btnLogout, MAX_ATTEMPTS);
 		clickWithJS(btnLogout);
+	}
+
+	public UserListView clickMenuXServerUserList() {
+		clickWithJS(menuXServer);
+		clickWithJS(menuXServerUserList);
+		return new UserListView(driver);
 	}
 
 	@Override

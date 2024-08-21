@@ -57,12 +57,12 @@ public abstract class BaseView {
     }
 
     // Wrapper para sendKeys
-    public void sendKeys(WebElement element, String text) {
+    public void sendKeys(WebElement element, CharSequence... keysToSend) {
         try {
-            waitForElementToBeVisible(element).sendKeys(text);
-            getLogger().info("Sent keys '{}' to element: {}", text, element);
+            waitForElementToBeVisible(element).sendKeys(keysToSend);
+            getLogger().info("Sent keys '{}' to element: {}", keysToSend, element);
         } catch (Exception e) {
-            getLogger().error("Failed to send keys '{}' to element: {}", text, element, e);
+            getLogger().error("Failed to send keys '{}' to element: {}", keysToSend, element, e);
             throw e;
         }
     }
